@@ -2,8 +2,11 @@
 
 namespace frontend\controllers;
 
+use common\models\DistrictView;
+use common\models\Soato;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
+use yii\httpclient\Client;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -76,6 +79,43 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+
+    public function actionPro(){
+        $model = DistrictView::find()->all();
+
+        $client = new Client();
+
+
+        foreach ($model as $item) {
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl('https://pm.gov.uz:8020/dictionary/mahalla?district_id='.$item->id)
+                ->send();
+            if ($response->isOk) {
+                foreach ($response->data as $i){
+                    $res_id = substr($i['id'],0,2);
+                    $reg_id = substr($i['id'],2,2);
+                    $dis_id = substr($i['id'],4,3);
+                    $qfi_id = substr($i['id'],7,3);
+                    $mah_id = substr($i['id'],10,4);
+                    echo $res_id.' '.$reg_id.' '.$dis_id.' '.$qfi_id.' '.$mah_id.'-'.$i['id'].'<br>';
+
+                    $mahalla = new Soato();
+                    $mahalla->id = $i['id'];
+                    $mahalla->res_id = $res_id;
+                    $mahalla->region_id = $reg_id;
+                    $mahalla->district_id = $dis_id;
+                    $mahalla->qfi_id = $qfi_id;
+                    $mahalla->mahalla_id = $mah_id;
+                    $mahalla->name_lot = $i['title'];
+                    $mahalla->name_cyr = $i['title'];
+                    $mahalla->name_ru = $i['title'];
+                    $mahalla->save();
+                }
+            }
+        }
     }
 
     /**
