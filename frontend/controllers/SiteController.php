@@ -113,6 +113,8 @@ class SiteController extends Controller
                     $mahalla->name_cyr = $i['title'];
                     $mahalla->name_ru = $i['title'];
                     $mahalla->save();
+
+
                 }
             }
         }
