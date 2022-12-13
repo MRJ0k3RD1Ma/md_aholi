@@ -1,19 +1,18 @@
 <?php
 
-namespace frontend\modules\cp;
-use Yii;
-use yii\filters\AccessControl;
+namespace frontend\modules\village;
 
+use yii\filters\AccessControl;
+use Yii;
 /**
- * cp module definition class
+ * village module definition class
  */
 class Module extends \yii\base\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'frontend\modules\cp\controllers';
-
+    public $controllerNamespace = 'frontend\modules\village\controllers';
     public function behaviors()
     {
         return [
@@ -24,7 +23,7 @@ class Module extends \yii\base\Module
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function($rule, $action){
-                            if(Yii::$app->user->identity->role_id == 20){
+                            if(Yii::$app->user->identity->role_id == 1){
                                 return true;
                             }
                             header('Location: '.Yii::$app->urlManager->createUrl([Yii::$app->user->identity->role->url]));
@@ -42,7 +41,8 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-        Yii::$app->viewPath = "@frontend/modules/cp/views";
+        Yii::$app->viewPath = "@frontend/modules/village/views";
+
         // custom initialization code goes here
     }
 }

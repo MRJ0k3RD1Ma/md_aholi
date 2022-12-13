@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2022 at 03:50 PM
+-- Generation Time: Dec 13, 2022 at 09:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,25 +24,336 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `border`
+-- Table structure for table `codes`
 --
 
-CREATE TABLE `border` (
-  `soato_id` bigint(20) NOT NULL,
-  `country_name` int(11) NOT NULL COMMENT 'Давлат(шаҳар,туман) номи',
-  `distance` varchar(255) NOT NULL DEFAULT '' COMMENT 'Масофаси'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Қўшни давлатлар билан чегарадошлиги.  (Қайси давлат, вилоят, туман (шаҳар)лари билан қанча масофада чегарадош)';
+CREATE TABLE `codes` (
+  `code` varchar(255) NOT NULL DEFAULT '',
+  `code_1` varchar(255) DEFAULT NULL,
+  `code_2` varchar(255) DEFAULT NULL,
+  `code_3` varchar(255) DEFAULT NULL,
+  `code_4` varchar(255) DEFAULT NULL,
+  `name` varchar(500) NOT NULL DEFAULT '',
+  `type_id` int(11) NOT NULL,
+  `param_id` int(11) NOT NULL,
+  `params` int(11) DEFAULT 1,
+  `param_1` varchar(255) DEFAULT NULL,
+  `param_2` varchar(255) DEFAULT NULL,
+  `param_3` varchar(255) DEFAULT NULL,
+  `param_4` varchar(255) DEFAULT NULL,
+  `param_5` varchar(255) DEFAULT NULL,
+  `table_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `codes`
+--
+
+INSERT INTO `codes` (`code`, `code_1`, `code_2`, `code_3`, `code_4`, `name`, `type_id`, `param_id`, `params`, `param_1`, `param_2`, `param_3`, `param_4`, `param_5`, `table_name`) VALUES
+('10', '10', NULL, NULL, NULL, 'МФЙ хакида. I. Маҳалла фуқаролар йиғини ҳақида умумий маълумот', 1, 1, 0, '', '', '', '', '', ''),
+('1010', '10', '10', NULL, NULL, 'MFY joylashgan viloyat', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1011', '10', '11', NULL, NULL, 'MFY tumani', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1012', '10', '12', NULL, NULL, 'Фуқаролар йиғини номи ', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1013', '10', '13', NULL, NULL, 'Ташкил топган санаси', 3, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1014', '10', '14', NULL, NULL, 'Умумий ер майдони (га)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1015', '10', '15', NULL, NULL, 'Таркибидаги аҳоли пунктлари', 7, 2, 1, NULL, NULL, NULL, NULL, NULL, 'village_punkt'),
+('1016', '10', '16', NULL, NULL, 'Қўшни давлатлар билан чегарадошлиги.  (Қайси давлат, вилоят, туман (шаҳар)лари билан қанча масофада чегарадош)', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1017', '10', '17', NULL, NULL, 'Туман (шаҳар) марказига нисбатан узоқлиги (км)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1018', '10', '18', NULL, NULL, 'Таркибидаги кўчалар сони', 2, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1018100', '10', '18', '100', NULL, 'Тўғри кўчалар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1018101', '10', '18', '101', NULL, 'тор кўчалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1018102', '10', '18', '102', NULL, 'тупик (берк) кўчалар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1018103', '10', '18', '103', NULL, 'шох кўча', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1019', '10', '19', NULL, NULL, 'Таркибидаги кўп қаватли уйлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1020', '10', '20', NULL, NULL, 'Кўп қаватли уйлардаги хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1021', '10', '21', NULL, NULL, 'Якка тартибдаги ҳовлилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1022', '10', '22', NULL, NULL, 'Таркибидаги аҳоли доимий яшамайдиган хонадонлар (квартиралар) сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1023', '10', '23', NULL, NULL, 'Хўжаликлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1025', '10', '25', NULL, NULL, 'Хонадонлар сони', 2, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1025100', '10', '25', '100', NULL, 'якка тартибдаги ҳовлилардаги', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1025101', '10', '25', '101', NULL, 'кўп қаватли уйлардаги', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1026', '10', '26', NULL, NULL, 'Оилалар сони', 2, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1026100', '10', '26', '100', NULL, 'якка тартибдаги ҳовлилардаги', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1026101', '10', '26', '101', NULL, 'кўп қаватли уйлардаги', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1027', '10', '27', NULL, NULL, 'Ёшлар дафтарига киритлган сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1028', '10', '28', NULL, NULL, 'Темир дафтарга киритилган сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1029', '10', '29', NULL, NULL, 'Аёллар дафтарига киритлган сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1030', '10', '30', NULL, NULL, 'Фуқаролар йиғинидаги ижтимоий, иқтисодий, маънавий муҳит ҳолати (Вазирлар Маҳкамасининг 2020 йил 14 августдаги 485-сонли қарорининг  1-иловасидаги баҳоланадиган 11 та мезон бўйича белгиланади)', 4, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('12', '12', NULL, NULL, NULL, ' МФЙ хакида. Қўшимча таклиф этилган маълумотлар', 1, 1, 0, '', '', '', '', '', ''),
+('1210', '12', '10', NULL, NULL, 'Раиснинг Ф.И.О.', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1211', '12', '11', NULL, NULL, 'Раиснинг mаълумоти (олий, ўрта махсус, ўрта)', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1212', '12', '12', NULL, NULL, 'Раиснинг мутахассислиги ', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1213', '12', '13', NULL, NULL, 'Раиснинг ёши (Туғилган йили)', 3, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1214', '12', '14', NULL, NULL, 'Раиснинг  телефон рақами (ишхона):', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1215', '12', '15', NULL, NULL, 'Раиснинг телефон рақами (мобил):', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1216', '12', '16', NULL, NULL, 'Профилактика (катта) инспектори Ф.И.О.', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1217', '12', '17', NULL, NULL, 'Профилактика (катта) инспектори телефони', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1218', '12', '18', NULL, NULL, 'Ёшлар етакчиси Ф.И.О.', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1219', '12', '19', NULL, NULL, 'Ёшлар етакчиси телефони', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1220', '12', '20', NULL, NULL, 'Хоким ўринбосари', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1221', '12', '21', NULL, NULL, 'Хоким ўринбосари телефони', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1222', '12', '22', NULL, NULL, 'Худуднинг карта тасвири', 5, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1223', '12', '23', NULL, NULL, 'Аҳолининг асосий даромад манбаи \r\n(маҳалла аҳолиси асосан қандай фаолият тури билан шуғулланиши сўз билан ёзилади) ', 6, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('14', '14', NULL, NULL, NULL, 'Демографик кўрсаткичлар', 1, 1, 0, '', '', '', '', '', ''),
+('1410', '14', '10', NULL, NULL, 'Аҳоли сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1410100', '14', '10', '100', NULL, 'Аҳоли сони эркаклар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1410101', '14', '10', '101', NULL, 'Аҳоли сони аёлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411', '14', '11', NULL, NULL, 'Жами 0-30 ёшлилар', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411100', '14', '11', '100', NULL, 'Жами 0-30 ёшли аёллар', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411101', '14', '11', '101', NULL, '- 0 - 2 ёш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('141110110', '14', '11', '101', '10', '0 - 2 ёш аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411102', '14', '11', '102', NULL, '- 3 - 6 ёш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('141110210', '14', '11', '102', '10', '3 - 6 ёш аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411103', '14', '11', '103', NULL, '- 7-13 ёш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('141110310', '14', '11', '103', '10', '7-13 ёш аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411104', '14', '11', '104', NULL, '-  14-17 ёш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('141110410', '14', '11', '104', '10', '14-17 ёш аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1411105', '14', '11', '105', NULL, '- 18-30 ёш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('141110510', '14', '11', '105', '10', '18-30 ёш аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1412', '14', '12', NULL, NULL, '100 ёшдан катталар', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1412100', '14', '12', '100', NULL, '100 ёшдан катта эркаклар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1412101', '14', '12', '101', NULL, '100 ёшдан катта аёлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1413', '14', '13', NULL, NULL, 'Пенсионерлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1413100', '14', '13', '100', NULL, 'Пенсионер эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1413101', '14', '13', '101', NULL, 'Пенсионер аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1414', '14', '14', NULL, NULL, 'Фуқаролиги бўлмаган шахслар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1414100', '14', '14', '100', NULL, 'Фуқаролиги бўлмаган эркак шахслар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1414101', '14', '14', '101', NULL, 'Фуқаролиги бўлмаган аёл шахслар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1415', '14', '15', NULL, NULL, 'Фуқаролар йиғинида рўйхатда туриб, ҳозирги кунда яшамаётганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1415100', '14', '15', '100', NULL, 'ҳозирги кунда яшамаётган эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1415101', '14', '15', '101', NULL, 'ҳозирги кунда яшамаётган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1416', '14', '16', NULL, NULL, 'Вақтинча рўйхатдан ўтиб яшаётганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1416100', '14', '16', '100', NULL, 'Вақтинча рўйхатдаги эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1416101', '14', '16', '101', NULL, 'Вақтинча рўйхатдаги аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1417', '14', '17', NULL, NULL, 'Фуқаролар йиғинида рўйхатдан ўтмасдан яшаётганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1417100', '14', '17', '100', NULL, 'рўйхатдан ўтмасдан яшаётган эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1417101', '14', '17', '101', NULL, 'рўйхатдан ўтмасдан яшаётган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1418', '14', '18', NULL, NULL, 'Ижара шартномаси асосида яшаётганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1418100', '14', '18', '100', NULL, 'Ижара шартномасида яшаётган эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1418101', '14', '18', '101', NULL, 'Ижара шартномасида яшаётган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1419', '14', '19', NULL, NULL, 'Меҳнатга лаёқатли аҳоли сони (16-54 ёшли аёллар, 16-59 ёшли эркаклар)', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1419100', '14', '19', '100', NULL, 'Меҳнатга лаёқатли 16-59 ёшли эркаклар сони ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1419101', '14', '19', '101', NULL, 'Меҳнатга лаёқатли 16-54 ёшли аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1420', '14', '20', NULL, NULL, 'Туғилганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1420100', '14', '20', '100', NULL, 'Туғилган эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1420101', '14', '20', '101', NULL, 'Туғилган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1421', '14', '21', NULL, NULL, 'Тузилган никоҳлар сони, бирлик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1422', '14', '22', NULL, NULL, 'Вафот этганлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1422100', '14', '22', '100', NULL, 'Вафот этган эркаклар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1422101', '14', '22', '101', NULL, 'Вафот этган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1423', '14', '23', NULL, NULL, 'Никоҳдан ажрашганлар сони, бирлик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1424', '14', '24', NULL, NULL, 'Ёшлар ўртасида никоҳдан ажрашганлар сони, бирлик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1425', '14', '25', NULL, NULL, 'Доимий яшаш мақсадида кўчиб келганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1426', '14', '26', NULL, NULL, 'Доимий яшаш мақсадида кўчиб кетганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('16', '16', NULL, NULL, NULL, ' VI. Аҳолининг ижтимоий ҳолати', 1, 1, 0, '', '', '', '', '', ''),
+('1610', '16', '10', NULL, NULL, 'Боқувчисини йўқотган оилалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1611', '16', '11', NULL, NULL, 'Ёлғиз оналар/оталар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1612', '16', '12', NULL, NULL, 'Ёлғиз кексалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1613', '16', '13', NULL, NULL, 'Камбағал оилалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1614', '16', '14', NULL, NULL, '2 ёшгача нафақа олувчилар оилалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1615', '16', '15', NULL, NULL, '14 ёшгача нафақа олувчилар оилалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1616', '16', '16', NULL, NULL, 'Моддий ёрдам олувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1617', '16', '17', NULL, NULL, 'Кўп болали оилалар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1617100', '16', '17', '100', NULL, '4-болали оилалар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1617101', '16', '17', '101', NULL, '5-болали оилалар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1617102', '16', '17', '102', NULL, '5-дан ортиқ болали оилалар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1618', '16', '18', NULL, NULL, 'Ногиронлиги бўлган шахслар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1618100', '16', '18', '100', NULL, '1-гуруҳ ногирон', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1618101', '16', '18', '101', NULL, '2-гуруҳ ногирон', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1618102', '16', '18', '102', NULL, '3-гуруҳ ногирон', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1619', '16', '19', NULL, NULL, 'Ногиронлик нафақаси олувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1620', '16', '20', NULL, NULL, 'Оғир шароитга тушиб қолган аёллар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1621', '16', '21', NULL, NULL, 'Иккинчи жаҳон уруши даврида фронт ва фронт ортида қатнашган ҳамда уларга тенглаштирилган фуқаролар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1622', '16', '22', NULL, NULL, 'Байналминал жангчилар ва Чернобль АЭС ҳалокатини бартараф этишда иштирок этганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('18', '18', NULL, NULL, NULL, 'Аҳоли бандлиги', 1, 1, 0, '', '', '', '', '', ''),
+('1810', '18', '10', NULL, NULL, 'Корхона ва ташкилотларда ишловчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811', '18', '11', NULL, NULL, 'Тадбиркорлик билан банд бўлганлар', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811100', '18', '11', '100', NULL, 'касаначилик билан банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811101', '18', '11', '101', NULL, 'миллий ҳунармандчилик билан шуғулланувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811102', '18', '11', '102', NULL, 'савдо-сотиқ билан шуғулланувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811103', '18', '11', '103', NULL, 'чорвачилик, паррандачилик ва асаларичилик билан банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1811104', '18', '11', '104', NULL, 'тадбиркорликнинг бошқа сохаларида банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1812', '18', '12', NULL, NULL, 'Мавсумий ишлар билан банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1813', '18', '13', NULL, NULL, 'Узоқ муддат хорижий давлатларга иш излаб кетганлар cони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1814', '18', '14', NULL, NULL, 'Доимий иш билан банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1815', '18', '15', NULL, NULL, 'Бола парвариши билан банд бўлганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1816', '18', '16', NULL, NULL, 'Ишловчи пенсионерлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1817', '18', '17', NULL, NULL, 'Талабалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1818', '18', '18', NULL, NULL, 'Ишловчи пенсионерлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1819', '18', '19', NULL, NULL, 'Ишсизлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1819100', '18', '19', '100', NULL, 'Ишсиз ёшлар (сони)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1819101', '18', '19', '101', NULL, 'Ишсиз аёллар (сони)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1819102', '18', '19', '102', NULL, 'Ишсиз бошқалар (сони)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1820', '18', '20', NULL, NULL, 'Техникум коллежлар битирувчилари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('1821', '18', '21', NULL, NULL, 'Олий таълим муассасалари битирувчилари', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('20', '20', NULL, NULL, NULL, 'Ижтимоий-маънавий муҳит, жиноятчилик билан боғлиқ кўрсаткичлар', 1, 1, 0, '', '', '', '', '', ''),
+('2010', '20', '10', NULL, NULL, 'Нотинч оилалар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2011', '20', '11', NULL, NULL, 'Ноқобил (фарзанд тарбиясига салбий таъсир кўрсатувчи ота-оналар) оилалар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2012', '20', '12', NULL, NULL, 'ЖЭМда жазо ўтаётганлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2013', '20', '13', NULL, NULL, 'ЖЭМда жазо муддати ўтаб қайтганлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2014', '20', '14', NULL, NULL, 'Озодликдан маҳрум қилиш билан боғлиқ бўлмаган жазоларни ўтаётган маҳкумлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2015', '20', '15', NULL, NULL, 'Ўз жонига қасд ва суиқасд қилиш ҳолати', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2016', '20', '16', NULL, NULL, 'Ўз жонига қасд қилиш ҳолати', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2017', '20', '17', NULL, NULL, 'Суиқасд қилиш ҳолати', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2018', '20', '18', NULL, NULL, 'Чет эл давлатларидан депортация қилинганлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2019', '20', '19', NULL, NULL, 'Одам савдоси билан боғлиқ жиноятлардан жабр кўрганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2020', '20', '20', NULL, NULL, 'Жами профилактик ҳисобда турган шахслар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021100', '20', '21', '100', NULL, 'Профилактик ҳисобда турган фоҳиша аёллар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021101', '20', '21', '101', NULL, 'Профилактик ҳисобда турган қўшмачилар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021102', '20', '21', '102', NULL, 'Профилактик ҳисобда турган ижтимоий кўмакка муҳтож шахслар (диний экстремистик оқим тоифасига мансуб бўлганлар)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021103', '20', '21', '103', NULL, 'Соғлиқни сақлаш муассасалари ҳисобида турганлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021104', '20', '21', '104', NULL, 'Гиёҳвандлар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021105', '20', '21', '105', NULL, 'Спиртли ичимликка ружу қўйган шахслар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021106', '20', '21', '106', NULL, 'Руҳий касаллар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2021107', '20', '21', '107', NULL, 'Заҳарвандлар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2022', '20', '22', NULL, NULL, 'Содир этилган ҳуқуқбузарликлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2023', '20', '23', NULL, NULL, 'Содир этилган жиноятлар ', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2023100', '20', '23', '100', NULL, 'Махсус объектларда (ЖИЭМ, чегара, божхона) содир этиладиган жиноятлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2023101', '20', '23', '101', NULL, 'Эҳтиётсизлик оқибатида содир  этиладиган жиноятлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2023102', '20', '23', '102', NULL, 'Иқтисодиёт ва ҳокимият органларининг фаолияти билан боғлиқ жиноятлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2023103', '20', '23', '103', NULL, 'Касбий ёки хизмат вазифани бажариш (шу жумладан, ҳарбий хизматни ўташ тартиби) билан боғлиқ жиноятлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2024', '20', '24', NULL, NULL, 'Аниқланган жиноятлар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025', '20', '25', NULL, NULL, 'Маҳалла ҳудудида содир этилган жиноятлар (8-илова 3-банд) ', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025100', '20', '25', '100', NULL, 'Қасддан одам ўлдириш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025101', '20', '25', '101', NULL, 'Қасддан баданга оғир шикаст етказиш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025102', '20', '25', '102', NULL, 'Қасддан баданга ўрта-ча оғир шикаст етказиш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025103', '20', '25', '103', NULL, 'Қасддан баданга енгил шикаст етказиш', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025104', '20', '25', '104', NULL, 'Номусга тегиш ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025105', '20', '25', '105', NULL, 'Босқинчилик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025106', '20', '25', '106', NULL, 'Талончилик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025107', '20', '25', '107', NULL, 'Ўғирлик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025108', '20', '25', '108', NULL, 'Гиёхвандлик ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025109', '20', '25', '109', NULL, 'Безорилик', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2025110', '20', '25', '110', NULL, 'Бошқа турдаги жиноятлар ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026', '20', '26', NULL, NULL, 'Жами иштирок этган \r\nшахслар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026100', '20', '26', '100', NULL, 'Маҳалла ҳудудида доимий яшайдиганлар  ', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026101', '20', '26', '101', NULL, 'Туманнинг бошқа маҳал-ласида яшовчи шахслар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026102', '20', '26', '102', NULL, 'Бошқа шаҳар-туманларда яшовчи шахслар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026103', '20', '26', '103', NULL, 'Бошқа вилоятларда яшовчи шахслар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2026104', '20', '26', '104', NULL, 'Чет эл фуқаролари', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('22', '22', NULL, NULL, NULL, 'Қишлоқ хўжалиги билан боғлиқ кўрсаткичлар', 1, 1, 0, '', '', '', '', '', ''),
+('2210', '22', '10', NULL, NULL, 'Деҳқон хўжаликлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2211', '22', '11', NULL, NULL, 'Деҳқон хўжаликлари ер майдони, га', 4, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2212', '22', '12', NULL, NULL, 'Томорқаси бор ҳовлилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2213', '22', '13', NULL, NULL, 'Томорқаси бор ҳовлиларнинг умумий майдони, га', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2214', '22', '14', NULL, NULL, 'Томорқасида иссиқхона ва парниклар бор оилалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2215', '22', '15', NULL, NULL, 'Иссиқхона ва парник майдони (га)', 4, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2216', '22', '16', NULL, NULL, 'Томорқадан унумли фойдаланаётган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2217', '22', '17', NULL, NULL, 'Томорқадан унумли фойдаланмаётган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2218', '22', '18', NULL, NULL, 'Томорқадан унумли фойдаланмагани учун расмий огоҳлантириш берилганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2219', '22', '19', NULL, NULL, 'Томорқадан унумли фойдаланмагани учун ер солиғи миқдорини 3 баравар ошириб тўлаш чораси кўрилганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2220', '22', '20', NULL, NULL, 'Чорвачилик билан шуғулланадиган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2221', '22', '21', NULL, NULL, '- йирик шохли қорамоллар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2222', '22', '22', NULL, NULL, '- қўй ва эчкилар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2223', '22', '23', NULL, NULL, '- отлар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2224', '22', '24', NULL, NULL, '- эшаклар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2225', '22', '25', NULL, NULL, '- туялар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2226', '22', '26', NULL, NULL, '- чўчқалар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2227', '22', '27', NULL, NULL, '- мўйнали ҳайвонлар, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2228', '22', '28', NULL, NULL, 'Паррандачилик билан шуғулланадиган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2229', '22', '29', NULL, NULL, '- жами уй паррандалари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2230', '22', '30', NULL, NULL, 'Қуёнчилик билан шуғулланадиган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2231', '22', '31', NULL, NULL, '- қуёнлар сони, бош', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2232', '22', '32', NULL, NULL, 'Асаларичилик билан шуғулланадиган хонадонлар  сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2233', '22', '33', NULL, NULL, '- жами асалари оилалари (уялар) сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2234', '22', '34', NULL, NULL, 'Балиқчилик билан шуғулланадиган хонадонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('24', '24', NULL, NULL, NULL, 'V. Ҳудуддаги ташкилот ва объектлар сони тўғрисида маълумот', 1, 1, 0, '', '', '', '', '', ''),
+('2410', '24', '10', NULL, NULL, 'Маҳалла гузари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2411', '24', '11', NULL, NULL, 'Кутубхоналар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2412', '24', '12', NULL, NULL, 'Савдо дўконлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413', '24', '13', NULL, NULL, 'Бозорлар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413100', '24', '13', '100', NULL, '- деҳқон бозорлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413101', '24', '13', '101', NULL, '- буюм бозорлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413102', '24', '13', '102', NULL, '- чорва (мол) бозорлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413103', '24', '13', '103', NULL, '- улгуржи бозорлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2413104', '24', '13', '104', NULL, '- кичик бозорчалар (бозорлар филиали ёки шахобчалари)', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2414', '24', '14', NULL, NULL, 'Тўйхоналар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2415', '24', '15', NULL, NULL, 'Умумий овқатланиш шохобчалари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2416', '24', '16', NULL, NULL, 'Кафе, Ресторан,бар', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2417', '24', '17', NULL, NULL, 'Интернет клублар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2418', '24', '18', NULL, NULL, 'Дорихоналар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2419', '24', '19', NULL, NULL, 'Ўқитиш ва ўргатиш марказлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2420', '24', '20', NULL, NULL, 'Шифохоналар сони ', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2420100', '24', '20', '100', NULL, '- Оилавий поликлиникалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2420101', '24', '20', '101', NULL, '- Қишлоқ оилавий (врачлик) пункти сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2421', '24', '21', NULL, NULL, 'Санаториялар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2422', '24', '22', NULL, NULL, 'Болалар оромгоҳлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2423', '24', '23', NULL, NULL, 'Фермер хўжаликлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2424', '24', '24', NULL, NULL, 'Спорт майдончалари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2425', '24', '25', NULL, NULL, 'Аҳоли дам олиш марказлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2426', '24', '26', NULL, NULL, 'Масжидлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2427', '24', '27', NULL, NULL, 'Бошқа диний ибодатхоналар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2428', '24', '28', NULL, NULL, 'Зиёратгоҳлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2429', '24', '29', NULL, NULL, 'Қабристонлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2430', '24', '30', NULL, NULL, 'Маҳалла ҳудудида жойлашган вазирлик, идора, ташкилотлар, муассасалар ва уларнинг қуйи тузилмалари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('26', '26', NULL, NULL, NULL, 'VII. Таълим муассасалари ва холати тўғрисида', 1, 1, 0, '', '', '', '', '', ''),
+('2610', '26', '10', NULL, NULL, 'Таълим муассасалари сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610100', '26', '10', '100', NULL, 'Мактабгача таълим муассасалари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610101', '26', '10', '101', NULL, 'Мактаблар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610102', '26', '10', '102', NULL, 'Мусиқа ва санъат мактаблари', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610103', '26', '10', '103', NULL, 'Болалар ва ўсмирлар спорт мактаблари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610104', '26', '10', '104', NULL, 'Ихтисослашган спорт мактаблари', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610105', '26', '10', '105', NULL, 'Лицейлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610106', '26', '10', '106', NULL, 'Коллежлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610107', '26', '10', '107', NULL, 'Техникумлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2610108', '26', '10', '108', NULL, 'Олий ўқув юртлари сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2611', '26', '11', NULL, NULL, 'Мусиқа ва санъат мактабларига борадиган ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2612', '26', '12', NULL, NULL, 'Болалар ва ўсмирлар спорт мактабларига борадиган ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2613', '26', '13', NULL, NULL, 'Ихтисослашган спорт мактабларига борадиган ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2614', '26', '14', NULL, NULL, 'Лицейларга борадиган ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2615', '26', '15', NULL, NULL, 'Коллежларга борадиган ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2616', '26', '16', NULL, NULL, 'Техникумларга борадиган талабалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2617', '26', '17', NULL, NULL, 'Олий ўқув юртларига борадиган талабалар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2618', '26', '18', NULL, NULL, 'Мактабгача таълим муассасалари қуввати', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2619', '26', '19', NULL, NULL, 'Мактабгача таълим муассасаларига борадиган тарбияланувчилар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2619100', '26', '19', '100', NULL, 'Joriy MFY dan keladigan tarbiyalanuvchilar сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2619101', '26', '19', '101', NULL, 'Boshqa MFY dan keladigan tarbiyalanuvchilar сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2620', '26', '20', NULL, NULL, 'MTM yoshdagi bolalar umumiy soni', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2621', '26', '21', NULL, NULL, 'Мактаблар қуввати', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2622', '26', '22', NULL, NULL, 'Мактаблар ўқувчилари сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2622100', '26', '22', '100', NULL, 'Жорий МФЙ дан ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2622101', '26', '22', '101', NULL, 'Бошқа МФЙ дан ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2623', '26', '23', NULL, NULL, 'Мактаблардаги гурухлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2624', '26', '24', NULL, NULL, 'Гурухлардаги ўқувчиларни ўртача сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2625', '26', '25', NULL, NULL, '2-сменадаги ўқувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2626', '26', '26', NULL, NULL, 'Охирги йилдаги битрувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2627', '26', '27', NULL, NULL, 'Шундан ОТМ га кирганлар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2628', '26', '28', NULL, NULL, 'Ўқитувчилар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2628100', '26', '28', '100', NULL, 'Эркак ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2628101', '26', '28', '101', NULL, 'Аёл ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2629', '26', '29', NULL, NULL, 'Олий тоифали ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2630', '26', '30', NULL, NULL, '1-тоифали ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2631', '26', '31', NULL, NULL, '2-тоифали ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2632', '26', '32', NULL, NULL, 'Тоифасиз ўқитувчилар сони', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2633', '26', '33', NULL, NULL, 'Олимпиадаларда  иштирок этган ўқувчилар сони', 2, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2633100', '26', '33', '100', NULL, 'Мактабда', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2633101', '26', '33', '101', NULL, 'Туманда', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2633102', '26', '33', '102', NULL, 'Вилоятда', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+('2633103', '26', '33', '103', NULL, 'Республикада', 2, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `business_type`
+-- Table structure for table `code_type`
 --
 
-CREATE TABLE `business_type` (
+CREATE TABLE `code_type` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL DEFAULT ''
+  `name` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `code_type`
+--
+
+INSERT INTO `code_type` (`id`, `name`) VALUES
+(1, 'Ochiq qoladi'),
+(2, 'Butun son'),
+(3, 'Sana'),
+(4, 'Kasr'),
+(5, 'Rasm'),
+(6, 'Matn'),
+(7, 'Boshqa jadval');
 
 -- --------------------------------------------------------
 
@@ -83,53 +394,6 @@ CREATE TABLE `company_type` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demographics`
---
-
-CREATE TABLE `demographics` (
-  `soato_id` bigint(20) NOT NULL,
-  `people` int(11) DEFAULT NULL COMMENT 'Аҳоли сони',
-  `people_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `_0_2` int(11) DEFAULT NULL COMMENT '- 0 - 2 ёш',
-  `_0_2_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `_3_6` int(11) DEFAULT NULL COMMENT '- 3 - 6 ёш',
-  `_3_6_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `_7_13` int(11) DEFAULT NULL COMMENT '- 7-13 ёш',
-  `_7_13_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `_18_30` int(11) DEFAULT NULL COMMENT '-  14-17 ёш',
-  `_18_30_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `_100` int(11) DEFAULT NULL COMMENT '- 18-30 ёш',
-  `_100_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `retired` int(11) DEFAULT NULL COMMENT 'Пенсионерлар сони',
-  `retired_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `stateless` int(11) DEFAULT NULL COMMENT 'Фуқаролиги бўлмаган шахслар сони',
-  `stateless_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `non_living` int(11) DEFAULT NULL COMMENT 'Фуқаролар йиғинида рўйхатда туриб, ҳозирги кунда яшамаётганлар сони',
-  `non_living_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `temporary` int(11) DEFAULT NULL COMMENT 'Вақтинча рўйхатдан ўтиб яшаётганлар сони',
-  `temporary_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `without_registration` int(11) DEFAULT NULL COMMENT 'Фуқаролар йиғинида рўйхатдан ўтмасдан яшаётганлар сони',
-  `without_registration_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `count_rental` int(11) DEFAULT NULL COMMENT 'Ижара шартномаси асосида яшаётганлар сони',
-  `count_rental_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `working_age` int(11) DEFAULT NULL COMMENT 'Меҳнатга лаёқатли аҳоли сони (16-54 ёшли аёллар, 16-59 ёшли эркаклар)',
-  `working_age_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `number_birth` int(11) DEFAULT NULL COMMENT 'Туғилганлар сони',
-  `number_birth_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `marriage` int(11) DEFAULT NULL COMMENT 'Тузилган никоҳлар сони, бирлик',
-  `death` int(11) DEFAULT NULL COMMENT 'Вафот этганлар сони',
-  `death_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `divorced` int(11) DEFAULT NULL COMMENT 'Никоҳдан ажрашганлар сони, бирлик',
-  `divorced_young` int(11) DEFAULT NULL COMMENT 'Ёшлар ўртасида никоҳдан ажрашганлар сони, бирлик',
-  `immigrated` int(11) DEFAULT NULL COMMENT 'Доимий яшаш мақсадида кўчиб келганлар сони',
-  `immigrated_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар',
-  `migrated` int(11) DEFAULT NULL COMMENT 'Доимий яшаш мақсадида кўчиб кетганлар сони',
-  `migrated_w` int(11) DEFAULT NULL COMMENT 'Шундан Аёллар'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Stand-in structure for view `district_view`
 -- (See below for the actual view)
 --
@@ -144,128 +408,6 @@ CREATE TABLE `district_view` (
 ,`name_ru` varchar(100)
 ,`center_ru` varchar(50)
 );
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employment`
---
-
-CREATE TABLE `employment` (
-  `soato_id` bigint(20) NOT NULL,
-  `employees` int(11) DEFAULT NULL COMMENT 'Корхона ва ташкилотларда ишловчилар сони',
-  `business` int(11) DEFAULT NULL COMMENT 'Тадбиркорлик билан банд бўлганлар',
-  `seasonal` int(11) DEFAULT NULL COMMENT 'Мавсумий ишлар билан банд бўлганлар сони',
-  `foreign` int(11) DEFAULT NULL COMMENT 'Узоқ муддат хорижий давлатларга иш излаб кетганлар cони',
-  `permanently` int(11) DEFAULT NULL COMMENT 'Доимий иш билан банд бўлганлар сони',
-  `child_care` int(11) DEFAULT NULL,
-  `working_pensioners` int(11) DEFAULT NULL COMMENT 'Ишловчи пенсионерлар сони',
-  `student` int(11) DEFAULT NULL COMMENT 'Талабалар сони',
-  `unemployed` int(11) DEFAULT NULL COMMENT 'Ишсизлар сони',
-  `unemployed_young` int(11) DEFAULT NULL COMMENT 'ёшлар (сони)',
-  `unemployed_woman` int(11) DEFAULT NULL COMMENT 'аёллар (сони)',
-  `unemployed_other` int(11) DEFAULT NULL COMMENT 'бошқалар (сони)',
-  `college_graduate` int(11) DEFAULT NULL COMMENT 'Техникум коллежлар битирувчилари сони',
-  `university_graduate` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT current_timestamp(),
-  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Аҳоли бандлиги';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employment_business`
---
-
-CREATE TABLE `employment_business` (
-  `soato_id` bigint(20) NOT NULL,
-  `type_id` int(11) NOT NULL,
-  `count` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mahalla`
---
-
-CREATE TABLE `mahalla` (
-  `soato_id` bigint(20) NOT NULL,
-  `name_mfy` varchar(255) NOT NULL DEFAULT '' COMMENT 'Фуқаролар йиғини номи ',
-  `create_date` date DEFAULT NULL COMMENT 'Ташкил топган санаси',
-  `area_total` varchar(255) NOT NULL DEFAULT '' COMMENT 'Умумий ер майдони',
-  `distance` varchar(255) NOT NULL DEFAULT '' COMMENT 'Туман (шаҳар) марказига нисбатан узоқлиги',
-  `home_apartment` int(11) DEFAULT 0 COMMENT 'Таркибидаги кўп қаватли уйлар сони',
-  `home_apartment_live` int(11) DEFAULT NULL COMMENT 'Кўп қаватли уйлардаги хонадонлар сони',
-  `home` int(11) DEFAULT NULL COMMENT 'Якка тартибдаги ҳовлилар сони',
-  `home_offen_live` int(11) DEFAULT NULL COMMENT 'Таркибидаги аҳоли доимий яшамайдиган хонадонлар (квартиралар) сони',
-  `households` int(11) DEFAULT NULL COMMENT 'Хўжаликлар сони',
-  `apartment` int(11) DEFAULT NULL COMMENT 'Хонадонлар сони',
-  `apartment_private` int(11) DEFAULT NULL COMMENT 'якка тартибдаги ҳовлилардаги',
-  `apartment_building` int(11) DEFAULT NULL COMMENT 'кўп қаватли уйлардаги',
-  `family` int(11) DEFAULT NULL COMMENT 'Оилалар сони',
-  `family_live_private` int(11) DEFAULT NULL COMMENT 'якка тартибдаги ҳовлилардаги',
-  `family_live_building` int(11) DEFAULT NULL COMMENT 'кўп қаватли уйлардаги',
-  `total_status_id` int(11) NOT NULL COMMENT 'Фуқаролар йиғинидаги ижтимоий, иқтисодий, маънавий муҳит ҳолати (Вазирлар Маҳкамасининг 2020 йил 14 августдаги 485-сонли қарорининг  1-иловасидаги баҳоланадиган 11 та мезон бўйича белгиланади)',
-  `source_income` text DEFAULT NULL,
-  `map_jpg` varchar(255) DEFAULT NULL,
-  `map_svg` longtext DEFAULT NULL,
-  `created` datetime DEFAULT current_timestamp(),
-  `updated` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mahalla_employee`
---
-
-CREATE TABLE `mahalla_employee` (
-  `id` int(11) NOT NULL,
-  `soato_id` bigint(20) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `middlename` varchar(255) DEFAULT NULL,
-  `reference_id` int(11) NOT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `phone_work` varchar(255) DEFAULT NULL,
-  `type_id` int(11) DEFAULT NULL,
-  `birthday` date NOT NULL,
-  `created` datetime DEFAULT current_timestamp(),
-  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mahalla_employee_type`
---
-
-CREATE TABLE `mahalla_employee_type` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mahalla_total_status`
---
-
-CREATE TABLE `mahalla_total_status` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Фуқаролар йиғинидаги ижтимоий, иқтисодий, маънавий муҳит ҳолати (Вазирлар Маҳкамасининг 2020 йил 14 августдаги 485-сонли қарорининг  1-иловасидаги баҳоланадиган 11 та мезон бўйича белгиланади)';
-
---
--- Dumping data for table `mahalla_total_status`
---
-
-INSERT INTO `mahalla_total_status` (`id`, `name`) VALUES
-(1, 'Намунали'),
-(2, 'Яхши'),
-(3, 'Қониқарли'),
-(4, 'Қониқарсиз');
 
 -- --------------------------------------------------------
 
@@ -290,13 +432,23 @@ CREATE TABLE `mahalla_view` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nation`
+-- Table structure for table `param`
 --
 
-CREATE TABLE `nation` (
+CREATE TABLE `param` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL
+  `name` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `param`
+--
+
+INSERT INTO `param` (`id`, `name`) VALUES
+(1, 'Ochiq qoladi'),
+(2, 'Umumiy soni'),
+(3, 'Yoziladi'),
+(4, 'Yig\'indisi');
 
 -- --------------------------------------------------------
 
@@ -320,27 +472,6 @@ CREATE TABLE `qfi_view` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reference`
---
-
-CREATE TABLE `reference` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='malumotlari';
-
---
--- Dumping data for table `reference`
---
-
-INSERT INTO `reference` (`id`, `name`) VALUES
-(1, 'Олий'),
-(2, 'Ўрта'),
-(3, 'Ўрта мағсус'),
-(4, 'Маълумотга эга эмас');
-
--- --------------------------------------------------------
-
---
 -- Stand-in structure for view `region_view`
 -- (See below for the actual view)
 --
@@ -355,19 +486,6 @@ CREATE TABLE `region_view` (
 ,`name_ru` varchar(100)
 ,`center_ru` varchar(50)
 );
-
--- --------------------------------------------------------
-
---
--- Table structure for table `settlements`
---
-
-CREATE TABLE `settlements` (
-  `id` int(11) NOT NULL,
-  `soato_id` bigint(20) NOT NULL,
-  `name` varchar(255) DEFAULT NULL COMMENT 'Пункт номи',
-  `ads` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Таркибидаги аҳоли пунктлари';
 
 -- --------------------------------------------------------
 
@@ -13070,108 +13188,22 @@ INSERT INTO `soato` (`id`, `res_id`, `region_id`, `district_id`, `qfi_id`, `maha
 -- --------------------------------------------------------
 
 --
--- Table structure for table `social_status`
+-- Table structure for table `stat`
 --
 
-CREATE TABLE `social_status` (
-  `soato_id` bigint(20) NOT NULL COMMENT 'Боқувчисини йўқотган оилалар сони',
-  `lost_breadwinners` int(11) DEFAULT NULL,
-  `single` int(11) DEFAULT NULL COMMENT 'Ёлғиз оналар/оталар сони',
-  `single_old` int(11) DEFAULT NULL COMMENT 'Ёлғиз кексалар сони',
-  `poor` int(11) DEFAULT NULL COMMENT 'Камбағал оилалар сони',
-  `beneficiary_2` int(11) DEFAULT NULL,
-  `beneficiary_4` int(11) DEFAULT NULL COMMENT '14 ёшгача нафақа олувчилар оилалар сони',
-  `financial_assistance` int(11) DEFAULT NULL COMMENT 'Моддий ёрдам олувчилар сони',
-  `many_children` int(11) DEFAULT NULL COMMENT 'Кўп болали оилалар сони',
-  `many_children_4` int(11) DEFAULT NULL COMMENT '4-болали оилалар',
-  `many_children_5` int(11) DEFAULT NULL COMMENT '5-болали оилалар',
-  `many_children_6` int(11) DEFAULT NULL COMMENT '5-дан ортиқ болали оилалар',
-  `disabilities` int(11) DEFAULT NULL COMMENT 'Ногиронлиги бўлган шахслар сони',
-  `disabilities_1` int(11) DEFAULT NULL COMMENT '1-гуруҳ',
-  `disabilities_2` int(11) DEFAULT NULL COMMENT '2-гуруҳ',
-  `disabilities_3` int(11) DEFAULT NULL COMMENT '3-гуруҳ',
-  `disability_recipients` int(11) DEFAULT NULL COMMENT 'Ногиронлик нафақаси олувчилар сони',
-  `heavy_w` int(11) DEFAULT NULL COMMENT 'Оғир шароитга тушиб қолган аёллар сони',
-  `second_world_war` int(11) DEFAULT NULL COMMENT 'Иккинчи жаҳон уруши даврида фронт ва фронт ортида қатнашган ҳамда уларга тенглаштирилган фуқаролар сони',
-  `chernobyl` int(11) DEFAULT NULL COMMENT 'Байналминал жангчилар ва Чернобль АЭС ҳалокатини бартараф этишда иштирок этганлар сони'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='VI. Аҳолининг ижтимоий ҳолати';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `streets`
---
-
-CREATE TABLE `streets` (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE `stat` (
   `soato_id` bigint(20) NOT NULL,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `type_id` int(11) NOT NULL,
-  `length` varchar(255) DEFAULT NULL,
-  `status_id` int(11) NOT NULL,
-  `pavement_id` int(11) NOT NULL
+  `created` datetime DEFAULT current_timestamp(),
+  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(11) DEFAULT 1,
+  `code` varchar(255) NOT NULL DEFAULT '',
+  `value` varchar(255) DEFAULT NULL,
+  `value_1` varchar(255) DEFAULT NULL,
+  `value_2` varchar(255) DEFAULT NULL,
+  `value_3` varchar(255) DEFAULT NULL,
+  `value_4` varchar(255) DEFAULT NULL,
+  `value_5` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `street_pavement`
---
-
-CREATE TABLE `street_pavement` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='kucha qoplamasi';
-
---
--- Dumping data for table `street_pavement`
---
-
-INSERT INTO `street_pavement` (`id`, `name`) VALUES
-(1, 'Асфалт'),
-(2, 'Шпс'),
-(3, 'Тупроқ'),
-(4, 'Аралаш');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `street_status`
---
-
-CREATE TABLE `street_status` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Kucha xolati';
-
---
--- Dumping data for table `street_status`
---
-
-INSERT INTO `street_status` (`id`, `name`) VALUES
-(1, 'Яҳши'),
-(2, 'Ўрта'),
-(3, 'Ёмон');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `street_type`
---
-
-CREATE TABLE `street_type` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Kocha turlari';
-
---
--- Dumping data for table `street_type`
---
-
-INSERT INTO `street_type` (`id`, `name`) VALUES
-(1, 'Тўғри кўча'),
-(2, 'тор кўча'),
-(3, 'тупик (берк) кўча');
 
 -- --------------------------------------------------------
 
@@ -13191,8 +13223,16 @@ CREATE TABLE `user` (
   `address` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT current_timestamp(),
   `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` int(11) DEFAULT 1
+  `status` int(11) DEFAULT 1,
+  `soato_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `role_id`, `company_id`, `name`, `image`, `username`, `password`, `phone`, `address`, `created`, `updated`, `status`, `soato_id`) VALUES
+(1, 20, NULL, 'Dilmurod', '', 'admin', '$2y$13$3RkVz8mFgUBkZJLS.gJDWO0gzo3zBs.kVT5utGOJ4.RmIOqtXGJIO', '-', '-', '0000-00-00 00:00:00', '2022-12-13 10:32:58', 1, 1733223450312);
 
 -- --------------------------------------------------------
 
@@ -13202,8 +13242,113 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL DEFAULT ''
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `name`, `url`) VALUES
+(1, 'Mahalla raisi', '/village/'),
+(20, 'Administrator', '/cp/');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_code1`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_code1` (
+`code` varchar(255)
+,`code_1` varchar(255)
+,`code_2` varchar(255)
+,`code_3` varchar(255)
+,`code_4` varchar(255)
+,`name` varchar(500)
+,`type_id` int(11)
+,`param_id` int(11)
+,`params` int(11)
+,`param_1` varchar(255)
+,`param_2` varchar(255)
+,`param_3` varchar(255)
+,`param_4` varchar(255)
+,`param_5` varchar(255)
+,`table_name` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_code2`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_code2` (
+`code` varchar(255)
+,`code_1` varchar(255)
+,`code_2` varchar(255)
+,`code_3` varchar(255)
+,`code_4` varchar(255)
+,`name` varchar(500)
+,`type_id` int(11)
+,`param_id` int(11)
+,`params` int(11)
+,`param_1` varchar(255)
+,`param_2` varchar(255)
+,`param_3` varchar(255)
+,`param_4` varchar(255)
+,`param_5` varchar(255)
+,`table_name` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_code3`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_code3` (
+`code` varchar(255)
+,`code_1` varchar(255)
+,`code_2` varchar(255)
+,`code_3` varchar(255)
+,`code_4` varchar(255)
+,`name` varchar(500)
+,`type_id` int(11)
+,`param_id` int(11)
+,`params` int(11)
+,`param_1` varchar(255)
+,`param_2` varchar(255)
+,`param_3` varchar(255)
+,`param_4` varchar(255)
+,`param_5` varchar(255)
+,`table_name` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_code4`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_code4` (
+`code` varchar(255)
+,`code_1` varchar(255)
+,`code_2` varchar(255)
+,`code_3` varchar(255)
+,`code_4` varchar(255)
+,`name` varchar(500)
+,`type_id` int(11)
+,`param_id` int(11)
+,`params` int(11)
+,`param_1` varchar(255)
+,`param_2` varchar(255)
+,`param_3` varchar(255)
+,`param_4` varchar(255)
+,`param_5` varchar(255)
+,`table_name` varchar(255)
+);
 
 -- --------------------------------------------------------
 
@@ -13212,7 +13357,7 @@ CREATE TABLE `user_role` (
 --
 DROP TABLE IF EXISTS `district_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `district_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`qfi_id` is null AND `s`.`district_id` is not nullnot null  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `district_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`qfi_id` is null AND `s`.`district_id` is not null;
 
 -- --------------------------------------------------------
 
@@ -13221,7 +13366,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `mahalla_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mahalla_view`  AS SELECT `s`.`id` AS `id`, `s`.`district_id` AS `district_id`, `s`.`region_id` AS `region_id`, `s`.`qfi_id` AS `qfi_id`, `s`.`mahalla_id` AS `mahalla_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`mahalla_id` is not nullnot null  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mahalla_view`  AS SELECT `s`.`id` AS `id`, `s`.`district_id` AS `district_id`, `s`.`region_id` AS `region_id`, `s`.`qfi_id` AS `qfi_id`, `s`.`mahalla_id` AS `mahalla_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`mahalla_id` is not null;
 
 -- --------------------------------------------------------
 
@@ -13230,7 +13375,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qfi_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qfi_view`  AS SELECT `s`.`id` AS `id`, `s`.`district_id` AS `district_id`, `s`.`region_id` AS `region_id`, `s`.`qfi_id` AS `qfi_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`qfi_id` is not null AND `s`.`mahalla_id` is nullnull  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qfi_view`  AS SELECT `s`.`id` AS `id`, `s`.`district_id` AS `district_id`, `s`.`region_id` AS `region_id`, `s`.`qfi_id` AS `qfi_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`qfi_id` is not null AND `s`.`mahalla_id` is null  ;
 
 -- --------------------------------------------------------
 
@@ -13241,20 +13386,58 @@ DROP TABLE IF EXISTS `region_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `region_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru` FROM `soato` AS `s` WHERE `s`.`district_id` is nullnull  ;
 
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_code1`
+--
+DROP TABLE IF EXISTS `view_code1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_code1`  AS SELECT `c`.`code` AS `code`, `c`.`code_1` AS `code_1`, `c`.`code_2` AS `code_2`, `c`.`code_3` AS `code_3`, `c`.`code_4` AS `code_4`, `c`.`name` AS `name`, `c`.`type_id` AS `type_id`, `c`.`param_id` AS `param_id`, `c`.`params` AS `params`, `c`.`param_1` AS `param_1`, `c`.`param_2` AS `param_2`, `c`.`param_3` AS `param_3`, `c`.`param_4` AS `param_4`, `c`.`param_5` AS `param_5`, `c`.`table_name` AS `table_name` FROM `codes` AS `c` WHERE `c`.`code_1` is not null AND `c`.`code_2` is null AND `c`.`code_3` is null AND `c`.`code_4` is null;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_code2`
+--
+DROP TABLE IF EXISTS `view_code2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_code2`  AS SELECT `c`.`code` AS `code`, `c`.`code_1` AS `code_1`, `c`.`code_2` AS `code_2`, `c`.`code_3` AS `code_3`, `c`.`code_4` AS `code_4`, `c`.`name` AS `name`, `c`.`type_id` AS `type_id`, `c`.`param_id` AS `param_id`, `c`.`params` AS `params`, `c`.`param_1` AS `param_1`, `c`.`param_2` AS `param_2`, `c`.`param_3` AS `param_3`, `c`.`param_4` AS `param_4`, `c`.`param_5` AS `param_5`, `c`.`table_name` AS `table_name` FROM `codes` AS `c` WHERE `c`.`code_1` is not null AND `c`.`code_2` is not null AND `c`.`code_3` is null AND `c`.`code_4` is null;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_code3`
+--
+DROP TABLE IF EXISTS `view_code3`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_code3`  AS SELECT `c`.`code` AS `code`, `c`.`code_1` AS `code_1`, `c`.`code_2` AS `code_2`, `c`.`code_3` AS `code_3`, `c`.`code_4` AS `code_4`, `c`.`name` AS `name`, `c`.`type_id` AS `type_id`, `c`.`param_id` AS `param_id`, `c`.`params` AS `params`, `c`.`param_1` AS `param_1`, `c`.`param_2` AS `param_2`, `c`.`param_3` AS `param_3`, `c`.`param_4` AS `param_4`, `c`.`param_5` AS `param_5`, `c`.`table_name` AS `table_name` FROM `codes` AS `c` WHERE `c`.`code_1` is not null AND `c`.`code_2` is not null AND `c`.`code_3` is not null AND `c`.`code_4` is null;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_code4`
+--
+DROP TABLE IF EXISTS `view_code4`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_code4`  AS SELECT `c`.`code` AS `code`, `c`.`code_1` AS `code_1`, `c`.`code_2` AS `code_2`, `c`.`code_3` AS `code_3`, `c`.`code_4` AS `code_4`, `c`.`name` AS `name`, `c`.`type_id` AS `type_id`, `c`.`param_id` AS `param_id`, `c`.`params` AS `params`, `c`.`param_1` AS `param_1`, `c`.`param_2` AS `param_2`, `c`.`param_3` AS `param_3`, `c`.`param_4` AS `param_4`, `c`.`param_5` AS `param_5`, `c`.`table_name` AS `table_name` FROM `codes` AS `c` WHERE `c`.`code_1` is not null AND `c`.`code_2` is not null AND `c`.`code_3` is not null AND `c`.`code_4` is not null;
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `border`
+-- Indexes for table `codes`
 --
-ALTER TABLE `border`
-  ADD PRIMARY KEY (`soato_id`);
+ALTER TABLE `codes`
+  ADD PRIMARY KEY (`code`),
+  ADD KEY `FK_codes_type_id` (`type_id`),
+  ADD KEY `FK_codes_param_id` (`param_id`);
 
 --
--- Indexes for table `business_type`
+-- Indexes for table `code_type`
 --
-ALTER TABLE `business_type`
+ALTER TABLE `code_type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -13272,69 +13455,10 @@ ALTER TABLE `company_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `demographics`
+-- Indexes for table `param`
 --
-ALTER TABLE `demographics`
-  ADD PRIMARY KEY (`soato_id`);
-
---
--- Indexes for table `employment`
---
-ALTER TABLE `employment`
-  ADD PRIMARY KEY (`soato_id`);
-
---
--- Indexes for table `employment_business`
---
-ALTER TABLE `employment_business`
-  ADD PRIMARY KEY (`soato_id`,`type_id`),
-  ADD KEY `FK_employment_business_type_id` (`type_id`);
-
---
--- Indexes for table `mahalla`
---
-ALTER TABLE `mahalla`
-  ADD PRIMARY KEY (`soato_id`),
-  ADD KEY `FK_mahalla_total_status_id` (`total_status_id`);
-
---
--- Indexes for table `mahalla_employee`
---
-ALTER TABLE `mahalla_employee`
-  ADD PRIMARY KEY (`id`,`soato_id`),
-  ADD KEY `FK_mahalla_employee_soato_id` (`soato_id`),
-  ADD KEY `FK_mahalla_employee_reference_id` (`reference_id`),
-  ADD KEY `FK_mahalla_employee_type_id` (`type_id`);
-
---
--- Indexes for table `mahalla_employee_type`
---
-ALTER TABLE `mahalla_employee_type`
+ALTER TABLE `param`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mahalla_total_status`
---
-ALTER TABLE `mahalla_total_status`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `nation`
---
-ALTER TABLE `nation`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reference`
---
-ALTER TABLE `reference`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `settlements`
---
-ALTER TABLE `settlements`
-  ADD PRIMARY KEY (`soato_id`);
 
 --
 -- Indexes for table `soato`
@@ -13343,44 +13467,20 @@ ALTER TABLE `soato`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `social_status`
+-- Indexes for table `stat`
 --
-ALTER TABLE `social_status`
-  ADD PRIMARY KEY (`soato_id`);
-
---
--- Indexes for table `streets`
---
-ALTER TABLE `streets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_streets_pavement_id` (`pavement_id`),
-  ADD KEY `FK_streets_soato_id` (`soato_id`),
-  ADD KEY `FK_streets_status_id` (`status_id`),
-  ADD KEY `FK_streets_type_id` (`type_id`);
-
---
--- Indexes for table `street_pavement`
---
-ALTER TABLE `street_pavement`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `street_status`
---
-ALTER TABLE `street_status`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `street_type`
---
-ALTER TABLE `street_type`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `stat`
+  ADD PRIMARY KEY (`soato_id`,`code`),
+  ADD KEY `FK_stat_code` (`code`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_user_soato_id` (`soato_id`),
+  ADD KEY `FK_user_company_id` (`company_id`),
+  ADD KEY `FK_user_role_id` (`role_id`);
 
 --
 -- Indexes for table `user_role`
@@ -13393,10 +13493,10 @@ ALTER TABLE `user_role`
 --
 
 --
--- AUTO_INCREMENT for table `business_type`
+-- AUTO_INCREMENT for table `code_type`
 --
-ALTER TABLE `business_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `code_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -13411,80 +13511,33 @@ ALTER TABLE `company_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mahalla_employee`
+-- AUTO_INCREMENT for table `param`
 --
-ALTER TABLE `mahalla_employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mahalla_employee_type`
---
-ALTER TABLE `mahalla_employee_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mahalla_total_status`
---
-ALTER TABLE `mahalla_total_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `nation`
---
-ALTER TABLE `nation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reference`
---
-ALTER TABLE `reference`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `streets`
---
-ALTER TABLE `streets`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `street_pavement`
---
-ALTER TABLE `street_pavement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `street_status`
---
-ALTER TABLE `street_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `street_type`
---
-ALTER TABLE `street_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `param`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `border`
+-- Constraints for table `codes`
 --
-ALTER TABLE `border`
-  ADD CONSTRAINT `FK_border_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION;
+ALTER TABLE `codes`
+  ADD CONSTRAINT `FK_codes_param_id` FOREIGN KEY (`param_id`) REFERENCES `param` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_codes_type_id` FOREIGN KEY (`type_id`) REFERENCES `code_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `company`
@@ -13493,59 +13546,19 @@ ALTER TABLE `company`
   ADD CONSTRAINT `FK_company_type_id` FOREIGN KEY (`type_id`) REFERENCES `company_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `demographics`
+-- Constraints for table `stat`
 --
-ALTER TABLE `demographics`
-  ADD CONSTRAINT `FK_demographics_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `stat`
+  ADD CONSTRAINT `FK_stat_code` FOREIGN KEY (`code`) REFERENCES `codes` (`code`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_stat_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `soato` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `employment`
+-- Constraints for table `user`
 --
-ALTER TABLE `employment`
-  ADD CONSTRAINT `FK_employment_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `employment_business`
---
-ALTER TABLE `employment_business`
-  ADD CONSTRAINT `FK_employment_business_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_employment_business_type_id` FOREIGN KEY (`type_id`) REFERENCES `business_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `mahalla`
---
-ALTER TABLE `mahalla`
-  ADD CONSTRAINT `FK_mahalla_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `soato` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_mahalla_total_status_id` FOREIGN KEY (`total_status_id`) REFERENCES `mahalla_total_status` (`id`) ON DELETE NO ACTION;
-
---
--- Constraints for table `mahalla_employee`
---
-ALTER TABLE `mahalla_employee`
-  ADD CONSTRAINT `FK_mahalla_employee_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `reference` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_mahalla_employee_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_mahalla_employee_type_id` FOREIGN KEY (`type_id`) REFERENCES `mahalla_employee_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `settlements`
---
-ALTER TABLE `settlements`
-  ADD CONSTRAINT `FK_settlements_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `social_status`
---
-ALTER TABLE `social_status`
-  ADD CONSTRAINT `FK_social_status_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION;
-
---
--- Constraints for table `streets`
---
-ALTER TABLE `streets`
-  ADD CONSTRAINT `FK_streets_pavement_id` FOREIGN KEY (`pavement_id`) REFERENCES `street_pavement` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_streets_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `mahalla` (`soato_id`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `FK_streets_status_id` FOREIGN KEY (`status_id`) REFERENCES `street_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_streets_type_id` FOREIGN KEY (`type_id`) REFERENCES `street_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `user`
+  ADD CONSTRAINT `FK_user_company_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_user_role_id` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_user_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `soato` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
