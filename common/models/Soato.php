@@ -20,7 +20,7 @@ use Yii;
  * @property string|null $name_ru
  * @property string|null $center_ru
  *
- * @property Company[] $companies
+ * @property User[] $users
  */
 class Soato extends \yii\db\ActiveRecord
 {
@@ -68,12 +68,12 @@ class Soato extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Companies]].
+     * Gets query for [[Users]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCompanies()
+    public function getUsers()
     {
-        return $this->hasMany(Company::class, ['soato_id' => 'id']);
+        return $this->hasMany(User::class, ['soato_id' => 'id']);
     }
 }

@@ -24,8 +24,8 @@ use Yii;
  * @property string|null $updated
  * @property int|null $status
  *
- * @property Soato $soato
  * @property CompanyType $type
+ * @property User[] $users
  */
 class Company extends \yii\db\ActiveRecord
 {
@@ -47,7 +47,6 @@ class Company extends \yii\db\ActiveRecord
             [['type_id', 'soato_id', 'parent_id', 'paid', 'status'], 'integer'],
             [['paid_date', 'active_to', 'active_each', 'created', 'updated'], 'safe'],
             [['name', 'inn', 'director', 'phone', 'address'], 'string', 'max' => 255],
-            [['soato_id'], 'exist', 'skipOnError' => true, 'targetClass' => Soato::class, 'targetAttribute' => ['soato_id' => 'id']],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => CompanyType::class, 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
@@ -78,16 +77,6 @@ class Company extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Soato]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSoato()
-    {
-        return $this->hasOne(Soato::class, ['id' => 'soato_id']);
-    }
-
-    /**
      * Gets query for [[Type]].
      *
      * @return \yii\db\ActiveQuery
@@ -95,5 +84,15 @@ class Company extends \yii\db\ActiveRecord
     public function getType()
     {
         return $this->hasOne(CompanyType::class, ['id' => 'type_id']);
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers()
+    {
+        return $this->hasMany(User::class, ['company_id' => 'id']);
     }
 }
