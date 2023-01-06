@@ -1,12 +1,18 @@
-<div class="cp-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+   use yii\widgets\ActiveForm;
+
+
+   $this->title = "Administrator sahifasi";
+?>
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Kodlarni <span class="text text-danger">.xlsx</span> fayldan import qilish</h3>
+        <?php $form = ActiveForm::begin()?>
+        <br>
+        <?= $form->field($model,'file')->fileInput()?>
+        <br>
+        <button class="btn btn-success" type="submit">Import qilish</button>
+        <?php ActiveForm::end()?>
+    </div>
 </div>
