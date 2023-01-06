@@ -528,13 +528,7 @@ SET character_set_client = utf8;
   1 AS `value_5` */;
 SET character_set_client = @saved_cs_client;
 
---
--- Dumping events for database 'mahalla1_baza'
---
 
---
--- Dumping routines for database 'mahalla1_baza'
---
 
 --
 -- Final view structure for view `district_view`
@@ -548,7 +542,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `district_view` AS select `s`.`id` AS `id`,`s`.`region_id` AS `region_id`,`s`.`district_id` AS `district_id`,`s`.`name_lot` AS `name_lot`,`s`.`center_lot` AS `center_lot`,`s`.`name_cyr` AS `name_cyr`,`s`.`center_cyr` AS `center_cyr`,`s`.`name_ru` AS `name_ru`,`s`.`center_ru` AS `center_ru` from `soato` `s` where `s`.`qfi_id` is null and `s`.`district_id` is not null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -566,7 +560,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `mahalla_view` AS select `s`.`id` AS `id`,`s`.`district_id` AS `district_id`,`s`.`region_id` AS `region_id`,`s`.`qfi_id` AS `qfi_id`,`s`.`mahalla_id` AS `mahalla_id`,`s`.`name_lot` AS `name_lot`,`s`.`center_lot` AS `center_lot`,`s`.`name_cyr` AS `name_cyr`,`s`.`center_cyr` AS `center_cyr`,`s`.`name_ru` AS `name_ru`,`s`.`center_ru` AS `center_ru` from `soato` `s` where `s`.`mahalla_id` is not null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -584,7 +578,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `qfi_view` AS select `s`.`id` AS `id`,`s`.`district_id` AS `district_id`,`s`.`region_id` AS `region_id`,`s`.`qfi_id` AS `qfi_id`,`s`.`name_lot` AS `name_lot`,`s`.`center_lot` AS `center_lot`,`s`.`name_cyr` AS `name_cyr`,`s`.`center_cyr` AS `center_cyr`,`s`.`name_ru` AS `name_ru`,`s`.`center_ru` AS `center_ru` from `soato` `s` where `s`.`qfi_id` is not null and `s`.`mahalla_id` is null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -602,7 +596,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `region_view` AS select `s`.`id` AS `id`,`s`.`region_id` AS `region_id`,`s`.`district_id` AS `district_id`,`s`.`name_lot` AS `name_lot`,`s`.`center_lot` AS `center_lot`,`s`.`name_cyr` AS `name_cyr`,`s`.`center_cyr` AS `center_cyr`,`s`.`name_ru` AS `name_ru`,`s`.`center_ru` AS `center_ru` from `soato` `s` where `s`.`district_id` is null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -620,7 +614,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_code1` AS select `c`.`code` AS `code`,`c`.`code_1` AS `code_1`,`c`.`code_2` AS `code_2`,`c`.`code_3` AS `code_3`,`c`.`code_4` AS `code_4`,`c`.`name` AS `name`,`c`.`type_id` AS `type_id`,`c`.`param_id` AS `param_id`,`c`.`params` AS `params`,`c`.`param_1` AS `param_1`,`c`.`param_2` AS `param_2`,`c`.`param_3` AS `param_3`,`c`.`param_4` AS `param_4`,`c`.`param_5` AS `param_5`,`c`.`table_name` AS `table_name` from `codes` `c` where `c`.`code_1` is not null and `c`.`code_2` is null and `c`.`code_3` is null and `c`.`code_4` is null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -638,7 +632,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_code2` AS select `c`.`code` AS `code`,`c`.`code_1` AS `code_1`,`c`.`code_2` AS `code_2`,`c`.`code_3` AS `code_3`,`c`.`code_4` AS `code_4`,`c`.`name` AS `name`,`c`.`type_id` AS `type_id`,`c`.`param_id` AS `param_id`,`c`.`params` AS `params`,`c`.`param_1` AS `param_1`,`c`.`param_2` AS `param_2`,`c`.`param_3` AS `param_3`,`c`.`param_4` AS `param_4`,`c`.`param_5` AS `param_5`,`c`.`table_name` AS `table_name` from `codes` `c` where `c`.`code_1` is not null and `c`.`code_2` is not null and `c`.`code_3` is null and `c`.`code_4` is null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -656,7 +650,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_code3` AS select `c`.`code` AS `code`,`c`.`code_1` AS `code_1`,`c`.`code_2` AS `code_2`,`c`.`code_3` AS `code_3`,`c`.`code_4` AS `code_4`,`c`.`name` AS `name`,`c`.`type_id` AS `type_id`,`c`.`param_id` AS `param_id`,`c`.`params` AS `params`,`c`.`param_1` AS `param_1`,`c`.`param_2` AS `param_2`,`c`.`param_3` AS `param_3`,`c`.`param_4` AS `param_4`,`c`.`param_5` AS `param_5`,`c`.`table_name` AS `table_name` from `codes` `c` where `c`.`code_1` is not null and `c`.`code_2` is not null and `c`.`code_3` is not null and `c`.`code_4` is null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -674,7 +668,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_code4` AS select `c`.`code` AS `code`,`c`.`code_1` AS `code_1`,`c`.`code_2` AS `code_2`,`c`.`code_3` AS `code_3`,`c`.`code_4` AS `code_4`,`c`.`name` AS `name`,`c`.`type_id` AS `type_id`,`c`.`param_id` AS `param_id`,`c`.`params` AS `params`,`c`.`param_1` AS `param_1`,`c`.`param_2` AS `param_2`,`c`.`param_3` AS `param_3`,`c`.`param_4` AS `param_4`,`c`.`param_5` AS `param_5`,`c`.`table_name` AS `table_name` from `codes` `c` where `c`.`code_1` is not null and `c`.`code_2` is not null and `c`.`code_3` is not null and `c`.`code_4` is not null */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -692,7 +686,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`mahalla1`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `view_stat` AS select `c`.`code` AS `c_code`,`c`.`code_1` AS `c_code_1`,`c`.`code_2` AS `c_code_2`,`c`.`code_3` AS `c_code_3`,`c`.`code_4` AS `c_code_4`,`c`.`name` AS `c_name`,`c`.`type_id` AS `c_type_id`,`c`.`param_id` AS `c_param_id`,`c`.`params` AS `c_params`,`c`.`param_1` AS `c_param_1`,`c`.`param_2` AS `c_param_2`,`c`.`param_3` AS `c_param_3`,`c`.`param_4` AS `c_param_4`,`c`.`param_5` AS `c_param_5`,`c`.`table_name` AS `c_table_name`,`s`.`soato_id` AS `soato_id`,`s`.`created` AS `created`,`s`.`updated` AS `updated`,`s`.`status` AS `status`,`s`.`code` AS `code`,`s`.`value` AS `value`,`s`.`value_1` AS `value_1`,`s`.`value_2` AS `value_2`,`s`.`value_3` AS `value_3`,`s`.`value_4` AS `value_4`,`s`.`value_5` AS `value_5` from (`stat` `s` left join `codes` `c` on(`c`.`code` = `s`.`code`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
