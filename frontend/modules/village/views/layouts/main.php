@@ -31,10 +31,11 @@ AppAsset::register($this);
 
     <?= $this->render('_header')?>
 
+    <?= $this->render('_menu')?>
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content" style="margin-left:0px;">
+    <div class="main-content">
 
         <div class="page-content">
             <div class="container-fluid">
@@ -64,11 +65,11 @@ AppAsset::register($this);
         </div>
         <!-- End Page-content -->
 
-        <footer class="footer" style="left:0px;">
+        <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Upzet.
+                        <script>document.write(new Date().getFullYear())</script> © Mahallabaho.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">

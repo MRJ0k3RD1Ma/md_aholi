@@ -10,33 +10,27 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/'])?>" class="waves-effect">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/village/'])?>" class="waves-effect">
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="menu-title">Layouts</li>
-
+                <li class="menu-title">Kodlar</li>
                 <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/codes'])?>" class="waves-effect">
-                        <i class="mdi mdi-home-variant-outline"></i>
-                        <span>Kodlar</span>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/village/default/change'])?>" class="waves-effect">
+                        <span>Ma`lumotlarni yangilash</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/company'])?>" class="waves-effect">
-                        <i class="mdi mdi-home-variant-outline"></i>
-                        <span>Tashkilotlar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/user'])?>" class="waves-effect">
-                        <i class="mdi mdi-home-variant-outline"></i>
-                        <span>Foydalanuvchilar</span>
-                    </a>
-                </li>
+                <?php if(false){ $code = \common\models\ViewCode1::find()->all();
+                    foreach ($code as $item):
+                ?>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createUrl(['/village/default/view','code'=>$item->code])?>" class="waves-effect">
+                                <span><?= $item->name ?></span>
+                            </a>
+                        </li>
+                <?php endforeach; }?>
 
 
 

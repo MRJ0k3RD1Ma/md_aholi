@@ -1,0 +1,18 @@
+[15-Dec-2022 19:57:37 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:01 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:02 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:02 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[29-Dec-2022 20:27:49 UTC] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): Write failed: Disk quota exceeded (122) in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php:221
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php(221): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php on line 221
+[29-Dec-2022 20:27:49 UTC] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): Write failed: Disk quota exceeded (122) in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php:221
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php(221): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php on line 221

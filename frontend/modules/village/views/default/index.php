@@ -1,12 +1,39 @@
-<div class="village-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+
+
+$this->title = Yii::$app->user->identity->soato->name_lot.' statistikalari';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kod</th>
+                                <th>Parametr nomi</th>
+                                <th>Qiymati</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php $n=0; foreach ($model as $item): $n++; ?>
+                            <tr>
+                                <td><?= $n;?></td>
+                                <td><?= $item->c_code?></td>
+                                <td><?= $item->c_name ?></td>
+                                <td><?= $item->value ?></td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

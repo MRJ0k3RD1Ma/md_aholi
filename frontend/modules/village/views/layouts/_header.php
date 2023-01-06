@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box text-center" style="background: #fff">
+            <div class="navbar-brand-box text-center">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/cp/'])?>" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="/design/assets/images/logo-sm.png" alt="logo-sm-dark" height="22">

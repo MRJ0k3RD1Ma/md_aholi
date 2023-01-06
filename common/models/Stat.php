@@ -24,6 +24,7 @@ use Yii;
  */
 class Stat extends \yii\db\ActiveRecord
 {
+    public $str,$file,$num,$date;
     /**
      * {@inheritdoc}
      */
@@ -39,9 +40,9 @@ class Stat extends \yii\db\ActiveRecord
     {
         return [
             [['soato_id', 'code'], 'required'],
-            [['soato_id', 'status'], 'integer'],
-            [['created', 'updated'], 'safe'],
-            [['code', 'value', 'value_1', 'value_2', 'value_3', 'value_4', 'value_5'], 'string', 'max' => 255],
+            [['soato_id', 'status','num'], 'integer'],
+            [['created', 'updated','date'], 'safe'],
+            [['code', 'value', 'value_1', 'value_2', 'value_3', 'value_4', 'value_5','str','file'], 'string', 'max' => 255],
             [['soato_id', 'code'], 'unique', 'targetAttribute' => ['soato_id', 'code']],
             [['code'], 'exist', 'skipOnError' => true, 'targetClass' => Codes::class, 'targetAttribute' => ['code' => 'code']],
             [['soato_id'], 'exist', 'skipOnError' => true, 'targetClass' => Soato::class, 'targetAttribute' => ['soato_id' => 'id']],
