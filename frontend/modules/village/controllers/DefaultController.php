@@ -18,10 +18,14 @@ class DefaultController extends Controller
      * Renders the index view for the module
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($code = null)
     {
         $soato = Yii::$app->user->identity->soato_id;
-        $codes = Codes::find()->all();
+        if($code != null){
+            $codes = Codes::find()->where('code like "'.$code.'%"')->all();
+        }else{
+            $codes = Codes::find()->all();
+        }
         foreach ($codes as $item){
             if(!($stat = Stat::findOne(['soato_id'=>$soato,'code'=>$item->code]))){
                 $stat = new Stat();
