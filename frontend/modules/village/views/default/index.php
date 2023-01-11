@@ -9,6 +9,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="card">
     <div class="card-body">
+        <h3 class="card-title">Code</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="get" action="/village">
+                    <input name="code" class="first__input fon_rangi" type="submit" value="10" />
+                    <input name="code" class="second__input" type="submit" value="12" />
+                    <input name="code" class="second__input" type="submit" value="14" />
+                    <input name="code" class="second__input" type="submit" value="16" />
+                    <input name="code" class="second__input" type="submit" value="18" />
+                    <input name="code" class="second__input" type="submit" value="20" />
+                    <input name="code" class="second__input" type="submit" value="22" />
+                    <input name="code" class="second__input" type="submit" value="24" />
+                    <input name="code" class="olti__input" type="submit" value="26" />
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
