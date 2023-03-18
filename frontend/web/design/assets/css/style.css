@@ -1,0 +1,45 @@
+.first__input{
+    float: left;
+    height: 30px;
+    border: 1px solid #000000;
+    border-radius: 4px 0 0 4px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.second__input{
+    float: left;
+    height: 30px;
+    border: 1px solid #000000;
+    border-left: none;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.olti__input {
+    float: left;
+    height: 30px;
+    border: 1px solid #000000;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.first__input:hover, .second__input:hover, .uch__input:hover, .tort__input:hover, .besh__input:hover, .olti__input:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+.fon_rangi{
+    background-color: #000000;
+    color: #ffffff;
+}

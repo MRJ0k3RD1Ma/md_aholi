@@ -1,0 +1,100 @@
+[15-Dec-2022 19:57:37 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:01 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:02 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[15-Dec-2022 19:58:02 Asia/Tashkent] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/mahalla1/public_html/vendor/composer/platform_check.php on line 24
+[29-Dec-2022 20:27:49 UTC] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): Write failed: Disk quota exceeded (122) in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php:221
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php(221): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php on line 221
+[29-Dec-2022 20:27:49 UTC] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): Write failed: Disk quota exceeded (122) in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php:221
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php(221): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Session.php on line 221
+[08-Jan-2023 16:52:39 UTC] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/mahalla1/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess()
+#2 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction()
+#3 [internal function]: yii\base\ActionFilter->beforeFilter()
+#4 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func()
+#5 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger()
+#6 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Controller.php(222): yii\base\Controller->beforeAction()
+#7 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Controller.php(176): yii\web\Controller->beforeAction()
+#8 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#9 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction()
+#10 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException()
+#11 [internal function]: yii\base\ErrorHandler->handleException()
+#12 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "design/css/style.css". in /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /home/mahalla1/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/mahalla1/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/mahalla1/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /home/mahalla1/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,uz;q=0.6,pl;q=0.5,ar;q=0.4,pt;q=0.3,es;q=0.2,uk;q=0.1,ko;q=0.1,fr;q=0.1,hy;q=0.1,kk;q=0.1,tr;q=0.1,la;q=0.1,nl;q=0.1,de;q=0.1,lv;q=0.1,sl;q=0.1,nb;q=0.1,tk;q=0.1',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => '_csrf-frontend=b7291701a6a3a7c60d5841eb26be48a0e72b2c64c22bcdc28623d98e10f4c4eca%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22zOyex268oKSCsT5bqtNN6E-JR_Xa1C9G%22%3B%7D; advanced-frontend=19aubabn4sl0ods60bi5nhqhjq',
+    'HTTP_HOST' => 'mahallabaho.uz',
+    'HTTP_REFERER' => 'https://mahallabaho.uz/site/login',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+    'HTTP_X_FORWARDED_HOST' => 'mahallabaho.uz',
+    'HTTP_X_FORWARDED_PORT' => '443',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_X_FORWARDED_SERVER' => 'mahallabaho.uz',
+    'HTTP_X_REAL_IP' => '::ffff:213.230.86.238',
+    'HTTP_SEC_CH_UA' => '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+    'HTTP_SEC_CH_UA_MOBILE' => '?0',
+    'HTTP_SEC_CH_UA_PLATFORM' => '"Windows"',
+    'HTTP_SEC_FETCH_SITE' => 'same-origin',
+    'HTTP_SEC_FETCH_MODE' => 'no-cors',
+    'HTTP_SEC_FETCH_DEST' => 'style',
+    'REDIRECT_UNIQUE_ID' => 'Y7r01zKCTBkWwVx65mWyJQAAAhE',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Y7r01zKCTBkWwVx65mWyJQAAAhE',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'mahallabaho.uz',
+    'SERVER_ADDR' => '83.69.139.151',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '213.230.86.238',
+    'DOCUMENT_ROOT' => '/home/mahalla1/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mahalla1/public_html',
+    'SERVER_ADMIN' => 'webmaster@mahallabaho.uz',
+    'SCRIPT_FILENAME' => '/home/mahalla1/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '15390',
+    'REDIRECT_URL' => '/design/css/style.css',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/design/css/style.css',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1673196759.139306,
+    'REQUEST_TIME' => 1673196759,
+]
