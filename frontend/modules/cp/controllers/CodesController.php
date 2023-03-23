@@ -3,6 +3,7 @@
 namespace frontend\modules\cp\controllers;
 
 use common\models\Codes;
+use common\models\Offer;
 use common\models\search\CodesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -55,9 +56,30 @@ class CodesController extends Controller
      */
     public function actionView($code)
     {
+        $model = $this->findModel($code);
+        $offer = new Offer();
+        $offer->code = $model->code;
+        $id = Offer::find()->where(['code'=>$model->code])->max('id');
+        if(!$id){
+            $id = 0;
+        }
+        $id++;
+        $offer->id = $id;
+        if($offer->load($this->request->post()) && $offer->save()){
+            $this->redirect(['view','code'=>$code]);
+        }
+
+
         return $this->render('view', [
-            'model' => $this->findModel($code),
+            'model' => $model,
         ]);
+    }
+
+    public function actionDeloff($code,$id){
+        if($offer = Offer::findOne(['code'=>$code,'id'=>$id])){
+            $offer->delete();
+        }
+        $this->redirect(['view','code'=>$code]);
     }
 
     /**

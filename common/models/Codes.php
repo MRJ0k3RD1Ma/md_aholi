@@ -93,4 +93,9 @@ class Codes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(CodeType::class, ['id' => 'type_id']);
     }
+
+    public function getOffer()
+    {
+        return $this->hasMany(Offer::class, ['code' => 'code']);
+    }
 }
