@@ -43,7 +43,7 @@ class Codes extends \yii\db\ActiveRecord
         return [
             [['code', 'type_id', 'param_id'], 'required'],
             [['type_id', 'param_id', 'params'], 'integer'],
-            [['code', 'code_1', 'code_2', 'code_3', 'param_1', 'param_2', 'param_3', 'param_4', 'param_5', 'table_name'], 'string', 'max' => 255],
+            [['code', 'code_1', 'code_2', 'code_3', 'param_1', 'param_2', 'param_3', 'param_4', 'param_5', 'table_name','formula'], 'string', 'max' => 255],
             [['name'], 'string', 'max' => 500],
             [['code'], 'unique'],
             [['param_id'], 'exist', 'skipOnError' => true, 'targetClass' => Param::class, 'targetAttribute' => ['param_id' => 'id']],

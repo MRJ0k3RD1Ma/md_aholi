@@ -33,6 +33,7 @@ use Yii;
  * @property string|null $value_3
  * @property string|null $value_4
  * @property string|null $value_5
+ * @property string|null $c_formula
  */
 class ViewStat extends \yii\db\ActiveRecord
 {
@@ -53,7 +54,7 @@ class ViewStat extends \yii\db\ActiveRecord
             [['c_type_id', 'c_param_id', 'c_params', 'soato_id', 'status'], 'integer'],
             [['soato_id'], 'required'],
             [['created', 'updated'], 'safe'],
-            [['c_code', 'c_code_1', 'c_code_2', 'c_code_3', 'c_code_4', 'c_param_1', 'c_param_2', 'c_param_3', 'c_param_4', 'c_param_5', 'c_table_name', 'code', 'value', 'value_1', 'value_2', 'value_3', 'value_4', 'value_5'], 'string', 'max' => 255],
+            [['c_code', 'c_code_1','c_formula', 'c_code_2', 'c_code_3', 'c_code_4', 'c_param_1', 'c_param_2', 'c_param_3', 'c_param_4', 'c_param_5', 'c_table_name', 'code', 'value', 'value_1', 'value_2', 'value_3', 'value_4', 'value_5'], 'string', 'max' => 255],
             [['c_name'], 'string', 'max' => 500],
         ];
     }
@@ -90,6 +91,7 @@ class ViewStat extends \yii\db\ActiveRecord
             'value_3' => 'Value 3',
             'value_4' => 'Value 4',
             'value_5' => 'Value 5',
+            'c_formula'=>'c_formula'
         ];
     }
 }

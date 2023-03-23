@@ -44,6 +44,8 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'table_name')->textInput(['maxlength' => true]) ?>
 
+            <?= $form->field($model, 'formula')->textInput(['maxlength' => true]) ?>
+
         </div>
     </div>
     <br>
